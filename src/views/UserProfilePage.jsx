@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 function UserProfilePage() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [mealsFoundBySearch, setmealsFoundBySearch] = useState([]);
-	const { user } = useContext(UserContext);
+	const { signedInUser } = useContext(UserContext);
 
 	useEffect(() => {
 		const delayDebounceFn = setTimeout(async () => {
@@ -53,9 +53,9 @@ function UserProfilePage() {
 					)}
 				</SearchContainer>
 				<PageTitle>Liked meals</PageTitle>
-				{user.products.length > 0 ? (
+				{signedInUser.products.length > 0 ? (
 					<RecipesContainer>
-						{user.products.map((meal) => (
+						{signedInUser.products.map((meal) => (
 							<FoodCard key={meal.idMeal} id={meal.idMeal} title={meal.strMeal} img={meal.strMealThumb} />
 						))}
 					</RecipesContainer>
