@@ -38,9 +38,7 @@ function UserProfilePage() {
 		<Wrapper>
 			<ContentWrapperContainer>
 				<SearchContainer>
-					{/* <SearchBarContainer> */}
 					<SearchBar onSearch={(e) => setSearchTerm(e.target.value)} hasInput={searchTerm.length != ""} />
-					{/* </SearchBarContainer> */}
 					{searchTerm.length != "" && (
 						<SearchResultContainer>
 							{mealsFoundBySearch &&
@@ -54,7 +52,7 @@ function UserProfilePage() {
 						</SearchResultContainer>
 					)}
 				</SearchContainer>
-
+				<PageTitle>Liked meals</PageTitle>
 				{user.products.length > 0 ? (
 					<RecipesContainer>
 						{user.products.map((meal) => (
@@ -81,7 +79,7 @@ const Wrapper = styled.div`
 const ContentWrapperContainer = styled(ContentWrapper)`
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
+	gap: 36px;
 `;
 
 const SearchContainer = styled.div`
@@ -132,10 +130,11 @@ const RecipesContainer = styled.div`
 `;
 
 const EmptyMessage = styled.p`
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
-	align-items: center;
-	margin-top: 70px;
+	align-items: center; */
+	/* margin-top: 70px; */
+	text-align: center;
 `;
 
 const ViewAllText = styled.span`
@@ -143,4 +142,8 @@ const ViewAllText = styled.span`
 	text-align: center;
 	padding: 8px;
 	border-top: 1px solid #373f4c;
+`;
+
+const PageTitle = styled.h2`
+	text-align: center;
 `;

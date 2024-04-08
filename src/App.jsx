@@ -4,15 +4,20 @@ import { UserContextProvider } from "./contexts/UserContext"; // Import the User
 import UserProfilePage from "./views/UserProfilePage";
 import SpecificMeal from "./views/SpecificMeal";
 import FullSearchResult from "./views/FullSearchResult";
+// import MobileNavbar from "./components/MobileNavbar";
+import Navbar from "./components/Navbar/Navbar";
+import SignIn from "./views/SignIn";
 
 function App() {
 	return (
 		<UserContextProvider>
 			<BrowserRouter>
+				{/* <Navbar /> */}
 				<Routes>
 					<Route path="/" element={<UserProfilePage />} />
 					<Route path="/meal/:id" element={<SpecificMeal />} />
 					<Route path="/searchresult/:query" element={<FullSearchResult />} />
+					<Route path="/signin" element={<SignIn />} />
 				</Routes>
 			</BrowserRouter>
 		</UserContextProvider>
