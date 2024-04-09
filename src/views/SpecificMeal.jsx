@@ -10,7 +10,7 @@ function SpecificMeal() {
 	const { id } = useParams();
 	const [meal, setMeal] = useState({});
 	const [markedAsLiked, setMarkedAsLiked] = useState(false);
-	const { addProduct, removeProductById, user } = useContext(UserContext);
+	const { addProduct, removeProductById, signedInUser } = useContext(UserContext);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -23,7 +23,7 @@ function SpecificMeal() {
 		};
 
 		fetchData();
-		if (user.products.some((product) => product.idMeal === id)) {
+		if (signedInUser.products.some((product) => product.idMeal === id)) {
 			setMarkedAsLiked(true);
 		}
 	}, []);
