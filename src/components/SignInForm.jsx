@@ -41,18 +41,18 @@ const SignInContainer = styled.div`
 
 const InputFieldWrapper = styled.div``;
 const InputLabel = styled.label`
-	color: #ffff;
+	color: ${(props) => props.theme.colors.white};
 	text-transform: uppercase;
 	font-weight: 300;
 	font-size: 16px;
 `;
 
 const InputField = styled.input`
-	color: #ffff;
+	color: ${(props) => props.theme.colors.white};
 	background-color: transparent;
 	border: none;
 	padding: 8px 0px;
-	border-bottom: 2px solid #52c4b9;
+	border-bottom: 2px solid ${(props) => props.theme.colors.accent};
 	width: 100%;
 	&:focus-visible {
 		outline: none;
@@ -64,7 +64,7 @@ const SignInButton = styled.button`
 	padding: 8px 32px;
 	border-radius: 24px;
 	border: none;
-	background-color: #52c4b9;
-	color: #ffff;
+	background-color: ${(props) => props.theme.colors.primary};
+	color: ${(props) => props.theme.colors.white};
 	box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
 `;

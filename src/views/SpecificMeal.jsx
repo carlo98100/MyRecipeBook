@@ -81,14 +81,14 @@ const Header = styled.div`
 
 const BackButton = styled.div`
 	display: flex;
-	background-color: #373f4c;
+	background-color: ${(props) => props.theme.colors.primaryBackground};
 	padding: 8px;
 	border-radius: 50%;
 `;
 
 const LikeButton = styled.div`
 	display: flex;
-	background-color: #373f4c;
+	background-color: ${(props) => props.theme.colors.primaryBackground};
 	padding: 8px;
 	border-radius: 50%;
 `;
@@ -101,5 +101,5 @@ const Description = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	color: #808080;
+	color: ${(props) => "#545e6e"};
 `;

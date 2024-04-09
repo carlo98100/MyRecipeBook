@@ -13,13 +13,7 @@ function UserContextProvider(props) {
 		},
 	]);
 
-	const [signedInUser, setSignedInUser] = useState({
-		firstname: "",
-		lastname: "",
-		email: "",
-		password: "",
-		products: [],
-	});
+	const [signedInUser, setSignedInUser] = useState(null);
 
 	// Method to add a product to the array
 	const addProduct = (product) => {

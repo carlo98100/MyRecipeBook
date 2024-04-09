@@ -72,9 +72,7 @@ function UserProfilePage() {
 
 export default UserProfilePage;
 
-const Wrapper = styled.div`
-	/* Add wrapper styles if necessary */
-`;
+const Wrapper = styled.div``;
 
 const ContentWrapperContainer = styled(ContentWrapper)`
 	display: flex;
@@ -83,7 +81,6 @@ const ContentWrapperContainer = styled(ContentWrapper)`
 `;
 
 const SearchContainer = styled.div`
-	/* Add search container styles if necessary */
 	position: relative;
 `;
 
@@ -93,14 +90,15 @@ const SearchBarContainer = styled.div`
 
 const SearchResultContainer = styled.div`
 	width: 100%;
-	border: 1px solid #373f4c;
+	border: 1px solid ${(props) => props.theme.colors.primaryBackground};
+
 	border-top: none;
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
 	position: absolute;
 	z-index: 100;
-	background-color: #ffff;
+	background-color: ${(props) => props.theme.colors.white};
 	border-bottom-left-radius: 16px;
 	border-bottom-right-radius: 16px;
 `;
@@ -118,9 +116,7 @@ const MealImage = styled.img`
 	width: 50px;
 `;
 
-const MealName = styled.h3`
-	/* Add meal name styles if necessary */
-`;
+const MealName = styled.h3``;
 
 const RecipesContainer = styled.div`
 	display: grid;
@@ -130,18 +126,13 @@ const RecipesContainer = styled.div`
 `;
 
 const EmptyMessage = styled.p`
-	/* display: flex;
-	flex-direction: column;
-	align-items: center; */
-	/* margin-top: 70px; */
 	text-align: center;
 `;
 
 const ViewAllText = styled.span`
-	/* Add view all text styles if necessary */
 	text-align: center;
 	padding: 8px;
-	border-top: 1px solid #373f4c;
+	border-top: 1px solid ${(props) => props.theme.colors.primaryBackground};
 `;
 
 const PageTitle = styled.h2`

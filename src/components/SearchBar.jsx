@@ -19,7 +19,7 @@ const SearchBarContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	border: 1px solid #373f4c;
+	border: 1px solid ${(props) => props.theme.colors.primaryBackground};
 	border-radius: 16px;
 	border-top-left-radius: 16px;
 	border-top-right-radius: 16px;

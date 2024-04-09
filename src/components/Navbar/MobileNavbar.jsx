@@ -34,7 +34,7 @@ const MobileNavbar = () => {
 export default MobileNavbar;
 
 const MobileNavLinksContainer = styled(ContentWrapper)`
-	color: #373f4c;
+	color: ${(props) => props.theme.colors.primaryBackground};
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
@@ -47,7 +47,7 @@ const HamburgerIcon = styled(RxHamburgerMenu)`
 `;
 
 const MobileMenu = styled.div`
-	background-color: #373f4c;
+	background-color: ${(props) => props.theme.colors.primaryBackground};
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -67,7 +67,7 @@ const MobileCloseContainer = styled.div`
 `;
 
 const CloseIcon = styled(HiXMark)`
-	color: #ffff;
+	color: ${(props) => props.theme.colors.white};
 `;
 
 const NavLinks = styled.div`
@@ -88,11 +88,11 @@ const NavItem = styled.a`
 `;
 
 const NavItemText = styled.span`
-	color: #ffff;
+	color: ${(props) => props.theme.colors.white};
 	font-size: 24px;
 `;
 
 const NavItemUnderline = styled.span`
 	height: 2px;
-	background-color: #ffff;
+	background-color: ${(props) => props.theme.colors.white};
 `;

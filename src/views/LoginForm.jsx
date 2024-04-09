@@ -10,20 +10,22 @@ function LoginForm() {
 	return (
 		<LogInContainer>
 			<ContentWrapperContainer>
-				<StyledDiv>
-					<ToggleSignInbtn onClick={() => setSignIn(true)} active={signIn}>
+				<ToggleContainer>
+					<ToggleSignInbtn onClick={() => setSignIn(true)} $active={signIn.toString()}>
 						Sign In
 					</ToggleSignInbtn>
-					<ToggleSignUpBtn onClick={() => setSignIn(false)} active={!signIn}>
+					<ToggleSignUpBtn onClick={() => setSignIn(false)} $active={(!signIn).toString()}>
 						Sign up
 					</ToggleSignUpBtn>
-				</StyledDiv>
-				<ToggleContainer>
-					<Title active={signIn}>Sign In</Title>
-					<span style={{ fontSize: 20, color: "#8c9caf", fontWeight: 300 }}>or</span>
-					<Title active={!signIn}>Sign Up</Title>
 				</ToggleContainer>
-				{signIn ? <SignInForm /> : <SignUpForm toggle={setSignIn} />}
+				<LoginFormsContainer>
+					<ToggleContainerTitles>
+						<Title $active={signIn.toString()}>Sign In</Title>
+						<OrText>or</OrText>
+						<Title $active={(!signIn).toString()}>Sign Up</Title>
+					</ToggleContainerTitles>
+					{signIn ? <SignInForm /> : <SignUpForm toggle={setSignIn} />}
+				</LoginFormsContainer>
 			</ContentWrapperContainer>
 		</LogInContainer>
 	);
@@ -31,29 +33,26 @@ function LoginForm() {
 
 export default LoginForm;
 
-const ContentWrapperContainer = styled(ContentWrapper)`
-	display: flex;
-	flex-direction: column;
-	gap: 60px;
-`;
+const ContentWrapperContainer = styled(ContentWrapper)``;
 
 const LogInContainer = styled.div`
-	background-color: #314257;
+	/* background-color: ${(props) => props.theme.colors.primaryBackground}; */
+	background: linear-gradient(0deg, #222e3f 0%, #2d3c51 50%, #394b63 100%);
 	height: 100vh;
 `;
 
-const StyledDiv = styled.div`
+const ToggleContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
 `;
 
 const StyledSpan = styled.span`
-	background-color: ${(props) => (props.active ? "#52c4b9" : "#49596d")};
+	background-color: ${(props) => (props.$active === "true" ? props.theme.colors.primary : props.theme.colors.primaryDark)};
 	padding: 8px 20px;
 	font-size: 12px;
-	color: ${(props) => (props.active ? "#FFFF" : "#8c9caf")};
-	box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+	color: ${(props) => (props.$active === "true" ? props.theme.colors.white : props.theme.colors.primaryLight)};
+	box-shadow: ${(props) => (props.$active === "true" ? `0 0 10px 2px ${props.theme.colors.shadow}` : "none")};
 `;
 
 const ToggleSignInbtn = styled(StyledSpan)`
@@ -63,15 +62,29 @@ const ToggleSignUpBtn = styled(StyledSpan)`
 	border-radius: 0px 16px 16px 0;
 `;
 
-const ToggleContainer = styled.div`
+const ToggleContainerTitles = styled.div`
 	display: flex;
 	flex-direction: row;
 	gap: 12px;
+	align-items: center;
 `;
 
-const Title = styled.span`
+const Title = styled.h2`
 	font-size: 24px;
-	color: ${(props) => (props.active ? "#FFFF" : "#8c9caf")};
-	border-bottom: ${(props) => (props.active ? "2px solid #52c4b9" : "none")};
+	color: ${(props) => (props.$active === "true" ? props.theme.colors.white : props.theme.colors.textDark)};
+	border-bottom: ${(props) => (props.$active === "true" ? `1px solid ${props.theme.colors.primary}` : "none")};
+	padding-bottom: ${(props) => (props.$active === "true" ? "8px" : "0px")};
 	font-weight: 300;
+`;
+const OrText = styled.h2`
+	font-size: 20px;
+	color: ${(props) => props.theme.colors.textDark};
+	font-weight: 300;
+`;
+
+const LoginFormsContainer = styled.div`
+	margin-top: 10vh;
+	display: flex;
+	flex-direction: column;
+	gap: 60px;
 `;

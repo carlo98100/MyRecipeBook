@@ -21,7 +21,7 @@ function FoodCard(props) {
 export default FoodCard;
 
 const FoodCardContainer = styled.div`
-	background-color: #373f4c;
+	background-color: ${(props) => props.theme.colors.primaryBackground};
 	border-radius: 16px;
 	padding: 24px;
 	position: relative;
@@ -29,7 +29,7 @@ const FoodCardContainer = styled.div`
 
 const Title = styled.h3`
 	font-weight: bold;
-	color: #32b481;
+	color: ${(props) => props.theme.colors.primary};
 `;
 const Img = styled.img`
 	max-width: 100%;
@@ -37,13 +37,13 @@ const Img = styled.img`
 `;
 
 const Description = styled.p`
-	color: #b4b8c0;
+	color: ${(props) => props.theme.colors.primaryBackground};
 `;
 
-const DetailWrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
-	position: relative;
-	background-color: yellow;
-`;
+// const DetailWrapper = styled.div`
+// 	display: flex;
+// 	flex-direction: column;
+// 	gap: 4px;
+// 	position: relative;
+// 	background-color: yellow;
+// `;
