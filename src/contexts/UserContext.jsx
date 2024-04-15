@@ -57,13 +57,7 @@ function UserContextProvider(props) {
 	};
 
 	const signOutUser = () => {
-		setSignedInUser({
-			firstname: "",
-			lastname: "",
-			email: "",
-			password: "",
-			products: [],
-		});
+		setSignedInUser(null);
 	};
 
 	const AddnewUser = (newUser) => {
