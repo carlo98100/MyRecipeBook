@@ -4,11 +4,15 @@ import { HiXMark } from "react-icons/hi2";
 import { RxHamburgerMenu } from "react-icons/rx";
 import ContentWrapper from "../ContentWrapper";
 import { NavLink } from "react-router-dom";
-import { GoSignOut } from "react-icons/go";
+// import { GoSignOut } from "react-icons/go";
 import { UserContext } from "../../contexts/UserContext";
+
+import DefaultUserProfile from "../../assets/default-user-img.png";
+
+import { LiaSignOutAltSolid } from "react-icons/lia";
 const MobileNavbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const { signOutUser } = useContext(UserContext);
+	const { signOutUser, signedInUser } = useContext(UserContext);
 
 	return (
 		<>
@@ -16,21 +20,34 @@ const MobileNavbar = () => {
 				<HamburgerIcon className="nav-icon hamburger" onClick={() => setIsOpen(!isOpen)} />
 			</MobileNavLinksContainer>
 			<MobileMenu open={isOpen}>
-				<MobileCloseContainer>
-					<CloseIcon className="mobile-close-icon" size={42} onClick={() => setIsOpen(!isOpen)} />
-				</MobileCloseContainer>
-				<NavLinks>
-					<NavItem to="/" onClick={() => setIsOpen(!isOpen)}>
-						<NavItemText>Profile</NavItemText>
-						<NavItemUnderline />
-					</NavItem>
-					<NavItem to="/categories" onClick={() => setIsOpen(!isOpen)}>
-						<NavItemText>Recipes</NavItemText>
-						<NavItemUnderline />
-					</NavItem>
-				</NavLinks>
-				<SignOutBtncontainer>
-					<SignOutbtn size={42} onClick={signOutUser} />
+				<div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+					<MobileCloseContainer>
+						<CloseIcon className="mobile-close-icon" size={42} onClick={() => setIsOpen(!isOpen)} />
+					</MobileCloseContainer>
+
+					<ProfileContainer>
+						<ProfileImage src={DefaultUserProfile} />
+						<ProfileInfocontainer>
+							<ProfileName>
+								{signedInUser.firstname} {signedInUser.lastname}
+							</ProfileName>
+							<ProfileRecipePosts>70 posts</ProfileRecipePosts>
+						</ProfileInfocontainer>
+					</ProfileContainer>
+					<NavLinks>
+						<NavItem to="/" onClick={() => setIsOpen(!isOpen)}>
+							<NavItemText>Profile</NavItemText>
+							<NavItemUnderline />
+						</NavItem>
+						<NavItem to="/categories" onClick={() => setIsOpen(!isOpen)}>
+							<NavItemText>Recipes</NavItemText>
+							<NavItemUnderline />
+						</NavItem>
+					</NavLinks>
+				</div>
+				<SignOutBtncontainer onClick={signOutUser}>
+					<SignOutbtn size={42} />
+					<SignOutText>Sign Out</SignOutText>
 				</SignOutBtncontainer>
 			</MobileMenu>
 		</>
@@ -62,6 +79,12 @@ const MobileMenu = styled.div`
 	transform: ${({ open }) => (open ? "none" : "translateX(100%)")};
 	transition: transform ease-in 250ms;
 	z-index: 10;
+	/* display: flex;
+	flex-direction: column;
+	gap: 24px; */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 `;
 
 const MobileCloseContainer = styled.div`
@@ -76,14 +99,14 @@ const CloseIcon = styled(HiXMark)`
 	color: ${(props) => props.theme.colors.white};
 `;
 
-const SignOutbtn = styled(GoSignOut)`
+const SignOutbtn = styled(LiaSignOutAltSolid)`
 	color: ${(props) => props.theme.colors.white};
 `;
 
 const NavLinks = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding-left: 20px;
+	/* padding-left: 20px; */
 	font-weight: 600;
 	align-items: flex-start;
 	gap: 8px;
@@ -110,7 +133,40 @@ const NavItemUnderline = styled.span`
 const SignOutBtncontainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
 	padding: 12px 12px;
-	margin-top: 64px;
+	margin: unset;
+	align-items: center;
+	gap: 8px;
+`;
+
+const ProfileContainer = styled.div`
+	/* display: flex;
+	justify-content: center; */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 20px;
+	padding: 0 12px;
+`;
+
+const ProfileImage = styled.img`
+	max-width: 50%;
+	max-height: 50%;
+	border-radius: 50%;
+	background-color: lightgray;
+`;
+
+const ProfileInfocontainer = styled.div``;
+
+const ProfileName = styled.h2`
+	color: ${(props) => props.theme.colors.white};
+`;
+const ProfileRecipePosts = styled.p`
+	color: ${(props) => props.theme.colors.white};
+`;
+
+const SignOutText = styled.span`
+	color: ${(props) => props.theme.colors.white};
+	font-size: 16px;
+	font-weight: 400;
 `;

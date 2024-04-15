@@ -88,7 +88,7 @@ function UserProfile() {
 export default UserProfile;
 
 const UserProfileContainer = styled.div`
-	height: 100vh;
+	height: calc(100vh - 60px);
 `;
 
 const ContentWrapperContainer = styled(ContentWrapper)`
@@ -159,7 +159,7 @@ const EmptyMessage = styled.p``;
 
 const FindRecipesBtn = styled(NavLink)`
 	padding: 8px 20px;
-	background-color: #569bec;
+	background-color: ${(props) => props.theme.colors.primary};
 	color: #ffff;
 	font-weight: bold;
 	border-radius: 12px;
