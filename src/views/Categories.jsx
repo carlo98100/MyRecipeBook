@@ -45,7 +45,7 @@ function Categories() {
 	// };
 
 	return (
-		<ContentWrapper>
+		<ContentWrapperContainer>
 			<PageTitle>Categories</PageTitle>
 			<CategoriesContainer>
 				{categories.map((category) => (
@@ -57,7 +57,7 @@ function Categories() {
 					/>
 				))}
 			</CategoriesContainer>
-		</ContentWrapper>
+		</ContentWrapperContainer>
 	);
 }
 
@@ -72,4 +72,10 @@ const CategoriesContainer = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
 	row-gap: 24px;
+`;
+
+const ContentWrapperContainer = styled(ContentWrapper)`
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
 `;
