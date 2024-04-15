@@ -39,9 +39,7 @@ function FullSearchResult() {
 
 export default FullSearchResult;
 
-const Wrapper = styled.div`
-	/* Add wrapper styles if necessary */
-`;
+const Wrapper = styled.div``;
 
 const ContentWrapperContainer = styled(ContentWrapper)`
 	display: flex;

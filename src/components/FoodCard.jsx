@@ -1,49 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-import { FaHeart } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
 function FoodCard(props) {
-	const navigate = useNavigate();
-
-	const navigateToProduct = (id) => {
-		navigate(`/meal/${id}`);
-	};
-
 	return (
-		<FoodCardContainer onClick={() => navigateToProduct(props.id)}>
-			<Img src={props.img} alt={props.title} />
+		<CardContainer img={props.img} onClick={props.onClick}>
 			<Title>{props.title}</Title>
-		</FoodCardContainer>
+		</CardContainer>
 	);
 }
 
 export default FoodCard;
 
-const FoodCardContainer = styled.div`
-	background-color: ${(props) => props.theme.colors.primaryBackground};
+const CardContainer = styled.div`
+	background-image: url(${(props) => props.img});
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	height: 300px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	border-radius: 16px;
-	padding: 24px;
-	position: relative;
 `;
 
 const Title = styled.h3`
-	font-weight: bold;
-	color: ${(props) => props.theme.colors.primary};
+	margin: 0;
+	padding: 10px;
 `;
-const Img = styled.img`
-	max-width: 100%;
-	max-height: 100%;
-`;
-
-const Description = styled.p`
-	color: ${(props) => props.theme.colors.primaryBackground};
-`;
-
-// const DetailWrapper = styled.div`
-// 	display: flex;
-// 	flex-direction: column;
-// 	gap: 4px;
-// 	position: relative;
-// 	background-color: yellow;
-// `;

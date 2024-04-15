@@ -1,24 +1,9 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import { UserContextProvider } from "./contexts/UserContext";
-import UserProfilePage from "./views/UserProfilePage";
-import SpecificMeal from "./views/SpecificMeal";
-import FullSearchResult from "./views/FullSearchResult";
-// import MobileNavbar from "./components/MobileNavbar";
-import Navbar from "./components/Navbar/Navbar";
-import LoginForm from "./views/LoginForm";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./NormalizeCSS";
-import ProtectedRoute from "./components/ProtectedRoute";
-
-// import { Navigate, Outlet } from "react-router-dom";
-
-// function ProtectedRoute({ isAllowed, redirectTo = "/signin", children }) {
-// 	if (!isAllowed) {
-// 		return <Navigate to={redirectTo} />;
-// 	}
-// 	return children ? children : <Outlet />;
-// }
+import Router from "./Router";
 
 function App() {
 	return (
@@ -26,35 +11,7 @@ function App() {
 			<GlobalStyle />
 			<ThemeProvider theme={theme}>
 				<UserContextProvider>
-					<BrowserRouter>
-						<Routes>
-							<Route
-								path="/"
-								element={
-									<ProtectedRoute>
-										<UserProfilePage />
-									</ProtectedRoute>
-								}
-							/>
-							<Route
-								path="/meal/:id"
-								element={
-									<ProtectedRoute>
-										<SpecificMeal />
-									</ProtectedRoute>
-								}
-							/>
-							<Route
-								path="/searchresult/:query"
-								element={
-									<ProtectedRoute>
-										<FullSearchResult />
-									</ProtectedRoute>
-								}
-							/>
-							<Route path="/signin" element={<LoginForm />} />
-						</Routes>
-					</BrowserRouter>
+					<RouterProvider router={Router} />
 				</UserContextProvider>
 			</ThemeProvider>
 		</>

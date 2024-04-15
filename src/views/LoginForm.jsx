@@ -36,7 +36,6 @@ export default LoginForm;
 const ContentWrapperContainer = styled(ContentWrapper)``;
 
 const LogInContainer = styled.div`
-	/* background-color: ${(props) => props.theme.colors.primaryBackground}; */
 	background: linear-gradient(0deg, #222e3f 0%, #2d3c51 50%, #394b63 100%);
 	height: 100vh;
 `;

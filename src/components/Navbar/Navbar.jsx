@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import MobileNavbar from "./MobileNavbar";
-// import MobileNavbar from "./MobileNavbar";
 // import DesktopNavbar from "./DesktopNavbar";
 
 const Navbar = () => {

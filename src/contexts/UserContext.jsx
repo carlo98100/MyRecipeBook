@@ -13,7 +13,13 @@ function UserContextProvider(props) {
 		},
 	]);
 
-	const [signedInUser, setSignedInUser] = useState(null);
+	const [signedInUser, setSignedInUser] = useState({
+		firstname: "Test",
+		lastname: "Testsson",
+		email: "test@test.se",
+		password: "testtest",
+		products: [],
+	});
 
 	// Method to add a product to the array
 	const addProduct = (product) => {
@@ -21,7 +27,7 @@ function UserContextProvider(props) {
 			...prevUser,
 			products: [...prevUser.products, product],
 		}));
-		console.log(product);
+		console.log("Added product:", product);
 	};
 
 	// Method to remove a product by its ID

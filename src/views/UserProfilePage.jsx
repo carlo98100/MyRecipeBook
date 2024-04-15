@@ -37,7 +37,7 @@ function UserProfilePage() {
 	return (
 		<Wrapper>
 			<ContentWrapperContainer>
-				<SearchContainer>
+				{/* <SearchContainer>
 					<SearchBar onSearch={(e) => setSearchTerm(e.target.value)} hasInput={searchTerm.length != ""} />
 					{searchTerm.length != "" && (
 						<SearchResultContainer>
@@ -51,7 +51,7 @@ function UserProfilePage() {
 							<ViewAllText onClick={() => navigateToViewAllResult(searchTerm)}>View all</ViewAllText>
 						</SearchResultContainer>
 					)}
-				</SearchContainer>
+				</SearchContainer> */}
 				<PageTitle>Liked meals</PageTitle>
 				{signedInUser.products.length > 0 ? (
 					<RecipesContainer>
@@ -82,10 +82,6 @@ const ContentWrapperContainer = styled(ContentWrapper)`
 
 const SearchContainer = styled.div`
 	position: relative;
-`;
-
-const SearchBarContainer = styled.div`
-	width: 100%;
 `;
 
 const SearchResultContainer = styled.div`

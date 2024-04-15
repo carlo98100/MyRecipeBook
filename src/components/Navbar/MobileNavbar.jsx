@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { HiXMark } from "react-icons/hi2";
 import { RxHamburgerMenu } from "react-icons/rx";
 import ContentWrapper from "../ContentWrapper";
+import { NavLink } from "react-router-dom";
 
 const MobileNavbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -17,12 +18,12 @@ const MobileNavbar = () => {
 					<CloseIcon className="mobile-close-icon" size={42} onClick={() => setIsOpen(!isOpen)} />
 				</MobileCloseContainer>
 				<NavLinks>
-					<NavItem href="#menu" onClick={() => setIsOpen(!isOpen)}>
-						<NavItemText>Menu</NavItemText>
+					<NavItem to="/categories" onClick={() => setIsOpen(!isOpen)}>
+						<NavItemText>Recipes</NavItemText>
 						<NavItemUnderline />
 					</NavItem>
-					<NavItem href="#footer" onClick={() => setIsOpen(!isOpen)}>
-						<NavItemText>Contact</NavItemText>
+					<NavItem to="/" onClick={() => setIsOpen(!isOpen)}>
+						<NavItemText>Profile</NavItemText>
 						<NavItemUnderline />
 					</NavItem>
 				</NavLinks>
@@ -79,7 +80,7 @@ const NavLinks = styled.div`
 	gap: 8px;
 `;
 
-const NavItem = styled.a`
+const NavItem = styled(NavLink)`
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;
