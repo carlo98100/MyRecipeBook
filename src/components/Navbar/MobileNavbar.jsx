@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { HiXMark } from "react-icons/hi2";
 import { RxHamburgerMenu } from "react-icons/rx";
 import ContentWrapper from "../ContentWrapper";
 import { NavLink } from "react-router-dom";
-
+import { GoSignOut } from "react-icons/go";
+import { UserContext } from "../../contexts/UserContext";
 const MobileNavbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const { signOutUser } = useContext(UserContext);
 
 	return (
 		<>
@@ -18,15 +20,18 @@ const MobileNavbar = () => {
 					<CloseIcon className="mobile-close-icon" size={42} onClick={() => setIsOpen(!isOpen)} />
 				</MobileCloseContainer>
 				<NavLinks>
-					<NavItem to="/categories" onClick={() => setIsOpen(!isOpen)}>
-						<NavItemText>Recipes</NavItemText>
-						<NavItemUnderline />
-					</NavItem>
 					<NavItem to="/" onClick={() => setIsOpen(!isOpen)}>
 						<NavItemText>Profile</NavItemText>
 						<NavItemUnderline />
 					</NavItem>
+					<NavItem to="/categories" onClick={() => setIsOpen(!isOpen)}>
+						<NavItemText>Recipes</NavItemText>
+						<NavItemUnderline />
+					</NavItem>
 				</NavLinks>
+				<SignOutBtncontainer>
+					<SignOutbtn size={42} onClick={signOutUser} />
+				</SignOutBtncontainer>
 			</MobileMenu>
 		</>
 	);
@@ -71,6 +76,10 @@ const CloseIcon = styled(HiXMark)`
 	color: ${(props) => props.theme.colors.white};
 `;
 
+const SignOutbtn = styled(GoSignOut)`
+	color: ${(props) => props.theme.colors.white};
+`;
+
 const NavLinks = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -96,4 +105,12 @@ const NavItemText = styled.span`
 const NavItemUnderline = styled.span`
 	height: 2px;
 	background-color: ${(props) => props.theme.colors.white};
+`;
+
+const SignOutBtncontainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	padding: 12px 12px;
+	margin-top: 64px;
 `;
