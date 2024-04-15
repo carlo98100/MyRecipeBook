@@ -10,7 +10,7 @@ import { LiaUserFriendsSolid } from "react-icons/lia";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import LikedMealsList from "../components/LikedMealsList";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function UserProfile() {
 	const { signedInUser } = useContext(UserContext);
@@ -74,8 +74,10 @@ function UserProfile() {
 					{signedInUser.products.length > 0 ? (
 						<LikedMealsList recipes={signedInUser.products.slice(0, 5)} />
 					) : (
-						<EmptyMessage>Looks like you haven't liked any recipes.</EmptyMessage>
-						// <LikedMealsList />
+						<EmptyRecipesContainer>
+							<EmptyMessage>Looks like you haven't liked any recipes.</EmptyMessage>
+							<FindRecipesBtn onClick={() => navigate("/categories")}>Find recipes</FindRecipesBtn>
+						</EmptyRecipesContainer>
 					)}
 				</div>
 			</ContentWrapper>
@@ -146,4 +148,21 @@ const StatisticText = styled.div`
 
 const Description = styled.span``;
 const Value = styled.span``;
+
+const EmptyRecipesContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+`;
+
 const EmptyMessage = styled.p``;
+
+const FindRecipesBtn = styled(NavLink)`
+	padding: 8px 20px;
+	background-color: #569bec;
+	color: #ffff;
+	font-weight: bold;
+	border-radius: 12px;
+	max-width: fit-content;
+	text-decoration: none;
+`;
